@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
+  devtools: { enabled: false},
   app: {
     head: {
       charset: 'utf-8',
@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     },
     // buildAssetsDir: '/asset/'
   },
-  css: ['~/asset/main.css'],
+  css: ['~/asset/main.css','@fortawesome/fontawesome-free/css/all.min.css','sweetalert2/dist/sweetalert2.min.css'],
   runtimeConfig: {
     public: {
       API_URL: process.env.NUXT_API_URL ||'http://s671int511v003.sit.kmutt.ac.th:3333/api/v1/',

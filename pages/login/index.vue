@@ -21,7 +21,7 @@ async function goLogin() {
         localStorage.setItem("UserID", payload.userId)
         localStorage.setItem("UserRole", payload.role)
         toast.add({ title: 'Login Successful' })
-        // router.push('/movies')
+        router.push('/redeem')
     } else {
         error.value = true
     }
@@ -33,7 +33,7 @@ const microsoftRedirect =`${runtimeConfig.public.API_URL}/public/auth/microsoft`
 onBeforeMount(async () => {
     let token = localStorage.getItem("Token")
     if (token) {
-        router.push('/movies')
+        router.push('/redeem')
     }
 })
 </script>
