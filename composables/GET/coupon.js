@@ -1,8 +1,8 @@
 import {getWithExpiry} from "~/composables/utils/localStorageUtil"
-async function getUser(userId) {
+async function getCoupons(type='active') {
 
     const runtimeConfig = useRuntimeConfig()
-    const url = runtimeConfig.public.API_URL + "/user/"+userId
+    const url = runtimeConfig.public.API_URL + "/coupons?type="+type
 
     
     const Token =getWithExpiry('Token')
@@ -40,4 +40,4 @@ async function getUser(userId) {
     }
 }
 
-export { getUser }
+export { getCoupons }

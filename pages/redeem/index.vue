@@ -1,6 +1,7 @@
 <script setup>
-import { redeemToken } from '~/composables/POST/redeem';
+import { redeemToken } from '~/composables/PUT/redeem';
 const code = ref('')
+const router = useRouter()
 onBeforeMount(() => {
   setPageLayout('main')
 })
@@ -28,8 +29,9 @@ const showAlert = async () => {
       title: 'Redeem token successfuly!',
       text: `you got ${redeem.data.token} token `,
       icon: 'success',
-      confirmButtonText: 'Cool'
+      confirmButtonText: 'See my tokens'
     })
+    router.push('/info')
   }
   else if (redeem.status == 409) {
     swal.fire({

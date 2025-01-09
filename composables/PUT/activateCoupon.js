@@ -1,6 +1,8 @@
-async function redeemToken(code) {
 
-    const Token = localStorage.getItem("Token")
+import {getWithExpiry} from "~/composables/utils/localStorageUtil"
+async function activateCoupon(id) {
+
+    const Token =getWithExpiry('Token')
 
     // Ensure Token exists before proceeding
     if (!Token) {
@@ -10,7 +12,7 @@ async function redeemToken(code) {
 
 
     const runtimeConfig = useRuntimeConfig()
-    const url = runtimeConfig.public.API_URL + "/trash/activate"
+    const url = runtimeConfig.public.API_URL + "/coupon/"+id
 
 
     try {
@@ -19,7 +21,7 @@ async function redeemToken(code) {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${Token}`
-            }, body: JSON.stringify({ code: code }),
+            },
         })
 
         // console.log('Data received:', data)
@@ -35,10 +37,10 @@ async function redeemToken(code) {
             return { status: 409, data: null }
         }
 
-        const data = await response.json()
+        // const data = await response.json()
         // console.log(data);
 
-        return { status: 200, data: data }
+        return { status: 200}
 
     } catch (error) {
 
@@ -49,4 +51,4 @@ async function redeemToken(code) {
     }
 }
 
-export { redeemToken }
+export { activateCoupon }

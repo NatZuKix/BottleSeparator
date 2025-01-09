@@ -2,6 +2,7 @@
 
 import { login } from "~/composables/POST/login"
 import { getTokenPayload } from "~/composables/utils/jwtUtil"
+import {setWithExpiry,getWithExpiry} from "~/composables/utils/localStorageUtil"
 onBeforeMount(() => {
     setPageLayout('login')
 })
@@ -15,13 +16,13 @@ const error = ref(false)
 async function goLogin() {
     const result = await login(username.value, password.value)
     if (result) {
-        localStorage.setItem("Token", result.token)
+        setWithExpiry("Token", result.token,180)
         let payload = getTokenPayload(result.token)
-        localStorage.setItem("Fullname", payload.name)
-        localStorage.setItem("UserID", payload.userId)
-        localStorage.setItem("UserRole", payload.role)
+        setWithExpiry("FullName", payload.name,180)
+        setWithExpiry("UserID", payload.userId,180)
+        setWithExpiry("UserRole", payload.role,180)
         toast.add({ title: 'Login Successful' })
-        router.push('/redeem')
+        router.push('/info')
     } else {
         error.value = true
     }
@@ -31,9 +32,9 @@ const microsoftRedirect =`${runtimeConfig.public.API_URL}/public/auth/microsoft`
 
 
 onBeforeMount(async () => {
-    let token = localStorage.getItem("Token")
+    let token = getWithExpiry("Token")
     if (token) {
-        router.push('/redeem')
+        router.push('/info')
     }
 })
 </script>

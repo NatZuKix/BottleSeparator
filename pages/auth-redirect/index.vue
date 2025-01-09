@@ -1,6 +1,7 @@
 <script setup>
 import { callback } from "~/composables/POST/callback"
 import { getTokenPayload } from "~/composables/utils/jwtUtil"
+import {setWithExpiry} from "~/composables/utils/localStorageUtil"
 const route = useRoute()
 const router = useRouter()
 const code = ref(route.query.code)
@@ -8,12 +9,12 @@ const handleCallback = async () => {
     const result = await callback(code.value)
     // console.log(result)
     if (result) {
-        localStorage.setItem("Token", result.token)
+        setWithExpiry("Token", result.token,180)
         let payload = getTokenPayload(result.token)
-        localStorage.setItem("FullName", payload.name)
-        localStorage.setItem("UserID", payload.userId)
-        localStorage.setItem("UserRole", payload.role)
-        router.push('/redeem')
+        setWithExpiry("FullName", payload.name,180)
+        setWithExpiry("UserID", payload.userId,180)
+        setWithExpiry("UserRole", payload.role,180)
+        router.push('/info')
     } else {
         
 

@@ -1,7 +1,7 @@
 <script setup>
 import Chart from '~/components/chart.vue';
 import { getUser } from '~/composables/GET/user';
-
+import {getWithExpiry} from "~/composables/utils/localStorageUtil"
 
 definePageMeta({
   middleware: "auth", // Use the 'auth' middleware
@@ -14,14 +14,14 @@ const bottle = ref(0)
 const can = ref(0)
 onBeforeMount(async () => {
   setPageLayout('main')
-  const id = localStorage.getItem("UserID")
+  const id =getWithExpiry('UserID')
   user.value = await getUser(id)
   if (user.value == null) {
     toast.add({
       icon: "ic:round-error",
       title: 'Error!',
       color: "red",
-      description: 'Unable to fetch employee data. Please try again.',
+      description: 'Unable to fetch user data. Please try again.',
       id: 'getEmp-error',
       type: 'error'
     })
@@ -72,6 +72,6 @@ onBeforeMount(async () => {
 
 
 
-<style>
+<style scoped>
 /* สำหรับปรับแต่งเพิ่มเติม */
 </style>
