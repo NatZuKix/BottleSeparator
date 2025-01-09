@@ -1,4 +1,4 @@
-function formatDate(timestamp) {
+function formatDate(timestamp) {     
     const date = new Date(timestamp);
     return date.toLocaleDateString("en-GB", {
       day: "2-digit",
@@ -8,6 +8,7 @@ function formatDate(timestamp) {
   }
 
   function isFutureTimestamp(timestamp) {
+    if(!timestamp)return null
     const givenTime = new Date(timestamp);
     const currentTime = new Date();
   

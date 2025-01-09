@@ -63,7 +63,7 @@ const showAlert = async () => {
 
 <template>
 
-  <div class="w-full h-full">
+  <div class="w-full h-full bg-slate-50">
     <div class="w-full h-full flex">
       <div class="flex flex-col w-full items-center justify-center">
         <h1 class="font-extrabold text-4xl text-blue-400 mb-3 xl:text-9xl md:text-7xl">Redeem Token</h1>

@@ -27,7 +27,7 @@ const chartData = ref({
   labels: [`Bottle (${props.bottle})`, `Can (${props.can})`],
   datasets: [
     {
-      label: 'My Dataset',
+      label: 'My Trash',
       data: [props.bottle, props.can],
       backgroundColor: [
         'rgba(54, 162, 235, 0.6)',

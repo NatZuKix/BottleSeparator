@@ -42,23 +42,23 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div class="w-full f-full bg-secondary flex flex-col items-center">
+  <div class="w-full h-full bg-white flex flex-col items-center">
 
-    <div class="w-full  bg-white rounded-lg shadow-md mt-10">
-      <div class="flex flex-col items-center p-6 w-full">
+    <div class="w-full  bg-blue-400 rounded-lg shadow-md ">
+      <div class="flex flex-col items-center p-6 w-full ">
 
         <img class="w-24 h-24 rounded-full  border-primary" src="/icons/profile.png" alt="User Avatar" />
-        <h1 class="mt-4 text-xl font-semibold text-blue-400">{{ user.name }}</h1>
+        <h1 class="mt-4 text-xl font-semibold text-white  break-words text-center">{{ user.name }}</h1>
         <div class="flex flex-row text-center items-center justify-center gap-3">
           <img class="w-8 h-8   " src="/icons/token.png" alt="User Avatar" />
-          <p class="text-gray-600">{{ user.credit }} Tokens</p>
+          <p class="text-white">{{ user.credit }} Tokens</p>
         </div>
 
       </div>
 
     </div>
-    <h1 class="mt-4 text-2xl font-semibold text-blue-400" v-if="total>0">Summary</h1>
-    <Chart :bottle="bottle" :can="can"  v-if="total>0"/>
+    <!-- <h1 class="mt-4 text-2xl font-semibold text-blue-400" v-if="total>0">Summary</h1> -->
+    <Chart :bottle="bottle" :can="can"  v-if="total>0" class="mt-2"/>
     <h1 class="mt-4 text-2xl font-semibold text-blue-400"  v-if="total>0">Total : {{ total }} </h1>
 
     <div class="flex justify-center  items-center h-fullw-full flex-col mt-10"  v-if="total<=0">

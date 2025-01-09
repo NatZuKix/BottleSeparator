@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-around items-center bg-blue-400 p-3 rounded-t-lg">
-    <div class="text-white text-center flex flex-col cursor-pointer" @click="showAlert">
+    <div class="text-white text-center flex flex-col cursor-pointer active:text-black" @click="router.push('/event')">
       <i class="fa-solid fa-gift text-xl mb-1"></i>
       <span>event</span>
     </div>
