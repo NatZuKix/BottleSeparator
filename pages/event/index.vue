@@ -146,26 +146,26 @@ async function generate(id, title, expire) {
 
         </div>
 
-        <div class="w-full  bg-white  h-[89%] ">
-            <div class="bg-gray-100 p-6 space-y-4 h-full">
+        <div class="w-full  bg-white  h-[83%] ">
+            <div class="bg-gray-100 p-6 space-y-4 h-full w-full">
                 <!-- Transaction Item -->
                 <div v-for="event in events" :key="event.id"
                     class="flex justify-between items-center bg-white p-4 rounded-lg shadow " :class="redeemMode?'':'active:bg-slate-300'" @click="generate(event.id, event.title, isFutureTimestamp(event.expiredAt))">
-                    <div class="flex items-center space-x-4 ">
+                    <div class="flex items-center space-x-4  w-full">
                         <!-- Icon -->
                         <div
                             class="w-12 h-12 bg-gray-200 flex justify-center items-center rounded-full overflow-hidden">
                             <img src="/icons/gift.png" alt="Icon" class="object-cover w-full h-full" />
                         </div>
                         <!-- Name & Description -->
-                        <div v-if="!redeemMode">
-                            <p class="text-lg font-medium">{{ event.title }}</p>
+                        <div v-if="!redeemMode" class="w-full">
+                            <p class="text-lg font-medium break-words  w-44 ">{{ event.title }}</p>
                             <p class="text-sm text-gray-500">coupon quantity : {{ event.quantity }}</p>
                             <p class="text-sm text-gray-500" v-if="event.expiredAt">Valid until {{
                                 formatDate(event.expiredAt) }}</p>
                         </div>
                         <div v-else>
-                            <p class="text-lg font-medium">{{ event.title }}</p>
+                            <p class="text-lg font-medium break-words  w-44">{{ event.title }}</p>
                             <p class="text-sm text-emerald-500 font-semibold">redeemed</p>
 
                         </div>
@@ -173,7 +173,7 @@ async function generate(id, title, expire) {
                     <!-- Points -->
                     <div class="flex justify-center items-center gap-2">
                         <h1>{{ event.pointUsed }}</h1>
-                        <img class="w-8 " src="/icons/token.png" alt="User Avatar" />
+                        <img class="w-8  " src="/icons/token.png" alt="User Avatar" />
                     </div>
 
                 </div>

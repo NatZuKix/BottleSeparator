@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   css: ['~/asset/main.css','@fortawesome/fontawesome-free/css/all.min.css','sweetalert2/dist/sweetalert2.min.css'],
   runtimeConfig: {
     public: {
-      API_URL: process.env.NUXT_API_URL ||'http://s671int511v003.sit.kmutt.ac.th:3333/api/v1/',
+      API_URL: process.env.NUXT_API_URL ||'http://bottleseparator-app.scnd.space:3333/api',
     }
   },
   postcss: {
@@ -24,6 +24,11 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
+  },
+  ssr: true,
+  server: {
+    port: 3000,
+    host: '0.0.0.0', // ให้ฟังทุก IP ภายใน Container
   },
   modules: ['@nuxt/ui', '@pinia/nuxt']
 })
