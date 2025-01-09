@@ -12,9 +12,9 @@
       <i class="fas fa-plus-circle text-xl mb-1"></i>
       <span>redeem</span>
     </div>
-    <div class="text-white text-center flex flex-col cursor-pointer" @click="showAlert" >
-      <i class="fa-solid fa-clock-rotate-left text-xl mb-1"></i>
-      <span>history</span>
+    <div class="text-white text-center flex flex-col cursor-pointer" @click="router.push('/info')" >
+      <i class="fa-solid fa-user text-xl mb-1"></i>
+      <span>info</span>
     </div>
     <div class="text-white text-center flex flex-col cursor-pointer" @click="showAlert">
       <i class="fa-solid fa-right-from-bracket text-xl mb-1"></i>

@@ -4,6 +4,10 @@ const code = ref('')
 onBeforeMount(() => {
   setPageLayout('main')
 })
+definePageMeta({
+    middleware: "auth", // Use the 'auth' middleware
+})
+
 
 const showAlert = async () => {
   const swal = useNuxtApp().$swal
